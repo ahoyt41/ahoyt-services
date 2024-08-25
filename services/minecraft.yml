@@ -26,6 +26,6 @@ services:
       - ${RCON_WEB_PORT}:${RCON_WEB_PORT}
       - ${RCON_SOCKET_PORT}:${RCON_SOCKET_PORT}
     depends_on:
-      - mc-1
+      - mc
 
 
