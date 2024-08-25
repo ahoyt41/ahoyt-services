@@ -13,6 +13,7 @@ services:
       - rcon
     networks:
       - ahoyt-internal
+      - default
 
 networks:
   ahoyt-internal:
