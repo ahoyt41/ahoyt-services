@@ -5,6 +5,8 @@ services:
     ports:
       - ${QBIT_WEB_PORT}:${QBIT_WEB_PORT}
       - ${QBIT_TORRENT_PORT}:${QBIT_TORRENT_PORT}
+      - ${QBIT_TORRENT_PORT}:${QBIT_TORRENT_PORT}/udp
+
     environment:
      - PUID=1000
      - PGID=1000
