@@ -26,7 +26,5 @@ services:
       - ${RCON_SOCKET_PORT}:${RCON_SOCKET_PORT}
     depends_on:
       - mc
-    networks:
-      - ahoyt-internal
 
 
