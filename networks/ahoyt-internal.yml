@@ -1,3 +1,0 @@
-networks:
-  ahoyt-internal:
-    external: true
