@@ -21,8 +21,6 @@ services:
       - ${TV_ROOT}:/downloads/tv-shows
       - ${MOVIES_ROOT}:/downloads/movies
       - ${MUSIC_ROOT}:/downloads/music
-    networks:
-      - ahoyt-internal
 
   plex:
     container_name: plex

@@ -12,8 +12,6 @@ services:
     environment:
       RCON_PASSWORD: ${RCON_PASSWORD}
     restart: unless-stopped
-    networks:
-      - ahoyt-internal
 
   rcon:
     container_name: rcon-web-admin
