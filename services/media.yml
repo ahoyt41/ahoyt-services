@@ -1,5 +1,3 @@
-include:
-  - ../networks/ahoyt-internal.yml
 services:
   qbit:
     container_name: qbit

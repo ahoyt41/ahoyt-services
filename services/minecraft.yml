@@ -1,6 +1,3 @@
-include:
-  - ../networks/ahoyt-internal.yml
-
 services:
   mc:
     image: itzg/minecraft-server

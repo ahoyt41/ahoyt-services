@@ -1,8 +1,4 @@
-include:
-  - ../networks/ahoyt-internal.yml
-
 services:
-
   nginx:
     image: nginx
     container_name: nginx
