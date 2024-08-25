@@ -11,4 +11,9 @@ services:
     depends_on:
       - qbit
       - rcon
+    networks:
+      - ahoyt-internal
 
+networks:
+  ahoyt-internal:
+    external: true
