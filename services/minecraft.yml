@@ -1,0 +1,37 @@
+include:
+  - ../networks/ahoyt-internal.yml
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - ${MINECRAFT_PORT}:${MINECRAFT_PORT}
+      - ${RCON_PORT}:${RCON_PORT}
+    volumes: 
+      - ${MINECRAFT_DATA}:/data
+    environment:
+      RCON_PASSWORD: ${RCON_PASSWORD}
+    restart: unless-stopped
+    networks:
+      - ahoyt-internal
+
+  rcon:
+    container_name: rcon-web-admin
+    image: itzg/rcon
+    environment:
+      RWA_ENV: "TRUE"
+      RWA_USERNAME: ${RWA_USERNAME-admin}
+      RWA_PASSWORD: ${RWA_PASSWORD-admin}
+      RWA_ADMIN: "TRUE"
+      RWA_RCON_HOST: mc
+      RWA_RCON_PASSWORD: ${RCON_PASSWORD}
+    restart: unless-stopped
+    ports:
+      - ${RCON_WEB_PORT}:${RCON_WEB_PORT}
+      - ${RCON_SOCKET_PORT}:${RCON_SOCKET_PORT}
+    depends_on:
+      - mc
+    networks:
+      - ahoyt-internal
+
+

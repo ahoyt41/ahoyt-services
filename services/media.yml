@@ -1,0 +1,54 @@
+include:
+  - ../networks/ahoyt-internal.yml
+services:
+  qbit:
+    container_name: qbit
+    image: lscr.io/linuxserver/qbittorrent:latest
+    ports:
+      - ${QBIT_WEB_PORT}:${QBIT_WEB_PORT}
+      - ${QBIT_TORRENT_PORT}:${QBIT_TORRENT_PORT}
+    environment:
+     - PUID=1000
+     - PGID=1000
+     - WEBUI_PORT=${QBIT_WEB_PORT}
+     - TZ=America/Denver
+     - TORRENTING_PORT=${QBIT_TORRENT_PORT}
+    volumes:
+      - ${QBIT_CONFIG}:/config/qBittorrent
+      - ${QBIT_CACHE}:/cache/qBittorrent
+      - ${QBIT_TORRENTS}:/downloads/torrents
+      - ${ISO_ROOT}:/downloads/iso
+      - ${TV_ROOT}:/downloads/tv-shows
+      - ${MOVIES_ROOT}:/downloads/movies
+      - ${MUSIC_ROOT}:/downloads/music
+    networks:
+      - ahoyt-internal
+
+  plex:
+    container_name: plex
+    image: lscr.io/linuxserver/plex:latest
+    network_mode: host
+    environment:
+      - PUID=${UID-1000}
+      - PGID=${GID-1000}
+      - TZ=America/Denver
+      - VERSION=docker
+    volumes:
+      - ${TV_ROOT}:/tv
+      - ${MOVIES_ROOT}:/movies
+      - ${MUSIC_ROOT}/:/music
+      - ${PLEX_CONFIG_ROOT}:/config
+    restart: unless-stopped
+
+  jellyfin:
+    container_name: jellyfin
+    image: ghcr.io/jellyfin/jellyfin:latest
+    network_mode: host
+    volumes:
+      - ${JELLYFIN_CONFIG_ROOT}:/config
+      - ${JELLYFIN_CACHE_ROOT}:/cache
+      - ${TV_ROOT}:/media/tv
+      - ${MOVIES_ROOT}:/media/movies
+      - ${MUSIC_ROOT}:/media/music
+    user: "${UID-1000}:${GID-1000}"
+

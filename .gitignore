@@ -1,0 +1,4 @@
+*.env
+configs/
+data/
+data/
