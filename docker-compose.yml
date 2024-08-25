@@ -1,12 +1,4 @@
 include:
   - path: services/minecraft.yml
-    env_file:
-      - environments/minecraft.env
   - path: services/ingres.yml
-    env_file: 
-      - environments/ingres.env
   - path: services/media.yml
-    env_file:
-      - environments/media.env
-
-
