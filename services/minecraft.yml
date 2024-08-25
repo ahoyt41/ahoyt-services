@@ -19,7 +19,7 @@ services:
       RWA_USERNAME: ${RWA_USERNAME-admin}
       RWA_PASSWORD: ${RWA_PASSWORD-admin}
       RWA_ADMIN: "TRUE"
-      RWA_RCON_HOST: mc
+      RWA_RCON_HOST: ${RCON_RCA_HOST}
       RWA_RCON_PASSWORD: ${RCON_PASSWORD}
     restart: unless-stopped
     ports:
