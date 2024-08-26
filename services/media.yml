@@ -22,6 +22,7 @@ services:
       - ${MOVIES_ROOT}:/downloads/movies
       - ${MUSIC_ROOT}:/downloads/music
       - ${PROJECT_ROOT}/setup/qbit:/custom-cont-init.d:ro
+      - ${PROJECT_ROOT}/data/qbit/temp:/downloads/temp
 
   plex:
     container_name: plex
